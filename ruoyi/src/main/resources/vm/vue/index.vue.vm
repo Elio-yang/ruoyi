@@ -275,9 +275,9 @@ export default {
 #end
       },
       // 表单参数
-      form: {},
+      {},
       // 表单校验
-      rules: {
+      {
 #foreach ($column in $columns)
 #if($column.required)
 #set($parentheseIndex=$column.columnComment.indexOf("（"))
@@ -294,7 +294,7 @@ export default {
 #end
 #end
       }
-    };
+    }
   },
   created() {
     this.getList();
@@ -347,7 +347,7 @@ export default {
 
 #end
 #end
-      };
+      }
       this.resetForm("form");
     },
     /** 搜索按钮操作 */

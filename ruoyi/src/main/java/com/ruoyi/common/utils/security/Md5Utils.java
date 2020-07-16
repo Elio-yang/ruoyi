@@ -1,5 +1,6 @@
 package com.ruoyi.common.utils.security;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,7 @@ public class Md5Utils
         {
             algorithm = MessageDigest.getInstance("MD5");
             algorithm.reset();
-            algorithm.update(s.getBytes("UTF-8"));
+            algorithm.update(s.getBytes(StandardCharsets.UTF_8));
             byte[] messageDigest = algorithm.digest();
             return messageDigest;
         }
@@ -31,7 +32,7 @@ public class Md5Utils
         return null;
     }
 
-    private static final String toHex(byte hash[])
+    private static final String toHex(byte[] hash)
     {
         if (hash == null)
         {
@@ -55,7 +56,7 @@ public class Md5Utils
     {
         try
         {
-            return new String(toHex(md5(s)).getBytes("UTF-8"), "UTF-8");
+            return new String(toHex(md5(s)).getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
         }
         catch (Exception e)
         {

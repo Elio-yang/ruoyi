@@ -56,7 +56,7 @@ public class SysDeptServiceImpl implements ISysDeptService
         }
         for (Iterator<SysDept> iterator = depts.iterator(); iterator.hasNext();)
         {
-            SysDept dept = (SysDept) iterator.next();
+            SysDept dept = iterator.next();
             // 如果是顶级节点, 遍历该父节点的所有子节点
             if (!tempList.contains(dept.getParentId()))
             {
@@ -130,7 +130,7 @@ public class SysDeptServiceImpl implements ISysDeptService
     public boolean hasChildByDeptId(Long deptId)
     {
         int result = deptMapper.hasChildByDeptId(deptId);
-        return result > 0 ? true : false;
+        return result > 0;
     }
 
     /**
@@ -143,7 +143,7 @@ public class SysDeptServiceImpl implements ISysDeptService
     public boolean checkDeptExistUser(Long deptId)
     {
         int result = deptMapper.checkDeptExistUser(deptId);
-        return result > 0 ? true : false;
+        return result > 0;
     }
 
     /**
@@ -271,7 +271,7 @@ public class SysDeptServiceImpl implements ISysDeptService
                 Iterator<SysDept> it = childList.iterator();
                 while (it.hasNext())
                 {
-                    SysDept n = (SysDept) it.next();
+                    SysDept n = it.next();
                     recursionFn(list, n);
                 }
             }
@@ -287,7 +287,7 @@ public class SysDeptServiceImpl implements ISysDeptService
         Iterator<SysDept> it = list.iterator();
         while (it.hasNext())
         {
-            SysDept n = (SysDept) it.next();
+            SysDept n = it.next();
             if (StringUtils.isNotNull(n.getParentId()) && n.getParentId().longValue() == t.getDeptId().longValue())
             {
                 tlist.add(n);
@@ -301,6 +301,6 @@ public class SysDeptServiceImpl implements ISysDeptService
      */
     private boolean hasChild(List<SysDept> list, SysDept t)
     {
-        return getChildList(list, t).size() > 0 ? true : false;
+        return getChildList(list, t).size() > 0;
     }
 }

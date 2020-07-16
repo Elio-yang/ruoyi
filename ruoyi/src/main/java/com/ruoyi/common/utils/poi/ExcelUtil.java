@@ -387,7 +387,7 @@ public class ExcelUtil<T>
         {
             row = sheet.createRow(i + 1 - startNo);
             // 得到导出对象.
-            T vo = (T) list.get(i);
+            T vo = list.get(i);
             int column = 0;
             for (Object[] os : fields)
             {

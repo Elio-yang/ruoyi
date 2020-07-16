@@ -98,10 +98,6 @@ public class SameUrlDataInterceptor extends RepeatSubmitInterceptor
     {
         long time1 = (Long) nowMap.get(REPEAT_TIME);
         long time2 = (Long) preMap.get(REPEAT_TIME);
-        if ((time1 - time2) < (this.intervalTime * 1000))
-        {
-            return true;
-        }
-        return false;
+        return (time1 - time2) < (this.intervalTime * 1000);
     }
 }
